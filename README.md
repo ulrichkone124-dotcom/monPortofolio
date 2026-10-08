@@ -3,9 +3,9 @@
 Portfolio personnel de **Kone Gbah Ulrich Paul David**, étudiant en Licence 3
 (Génie Réseaux Logiciel) et développeur Front-End / Design Web.
 
-🔗 Site : *(ajoute ici le lien une fois publié, ex. GitHub Pages)*
+🔗 Site : https://github.com/ulrichkone124-dotcom/monPortofolio.git
 
-![Aperçu du portfolio](https://img.shields.io/badge/status-en%20d%C3%A9veloppement-6C5CE7)
+![Aperçu du portfolio] (apercu.png)
 
 ## ✨ Aperçu
 
