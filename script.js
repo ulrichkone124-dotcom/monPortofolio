@@ -1,8 +1,4 @@
 /* =========================================================
-   PORTFOLIO - script.js (JavaScript vanilla)
-   ========================================================= */
-
-/* =========================================================
    TES COMPÉTENCES — modifie uniquement cette liste.
    ---------------------------------------------------------
    short   : 2-3 lettres affichées dans le petit badge coloré
