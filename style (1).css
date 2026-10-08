@@ -1,0 +1,337 @@
+/* =========================================================
+   PORTFOLIO - Kone Gbah Ulrich Paul David
+   Thème sombre + accent violet
+   ========================================================= */
+
+/* ---------- 1. Variables (change les couleurs ici) ---------- */
+:root {
+  --bg: #0A0E1A;
+  --card: #151A2D;
+  --card-border: rgba(162, 155, 254, 0.14);
+  --primary: #6C5CE7;
+  --soft: #A29BFE;
+  --accent: #5352ED;
+  --gradient: linear-gradient(135deg, #6C5CE7 0%, #A29BFE 100%);
+  --gradient-btn: linear-gradient(135deg, #5352ED 0%, #6C5CE7 60%, #A29BFE 100%);
+  --text-muted: #94a3b8;
+  --grey-1: #1b2033;
+  --grey-2: #262c44;
+}
+
+/* ---------- 2. Base ---------- */
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body { background: var(--bg); }
+img { max-width: 100%; display: block; }
+
+:focus-visible {
+  outline: 2px solid var(--soft);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.gradient-text {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------- 3. Navbar ---------- */
+.navbar {
+  background: rgba(10, 14, 26, 0.75);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color .3s, background .3s;
+}
+.navbar.scrolled { border-bottom-color: var(--card-border); background: rgba(10, 14, 26, 0.92); }
+
+.logo-mark {
+  display: inline-grid; place-items: center;
+  width: 34px; height: 34px; border-radius: 8px;
+  font-size: 13px; font-weight: 800; color: var(--soft);
+  background: rgba(108, 92, 231, .15);
+  border: 1px solid var(--card-border);
+}
+
+.nav-link {
+  position: relative;
+  color: #cbd5e1;
+  padding-bottom: 6px;
+  transition: color .2s;
+}
+.nav-link:hover, .nav-link.active { color: #fff; }
+.nav-link.active::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0;
+  height: 2px; border-radius: 2px; background: var(--gradient);
+}
+
+.mobile-menu {
+  display: none;
+  flex-direction: column; gap: 4px;
+  padding: 8px 20px 18px;
+  border-top: 1px solid var(--card-border);
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu .nav-link { padding: 10px 0; }
+.mobile-menu .nav-link.active::after { display: none; }
+
+/* ---------- 4. Boutons & tags ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-size: 14px; font-weight: 600;
+  transition: transform .2s, box-shadow .2s, background .2s, border-color .2s;
+}
+.btn-primary { background: var(--gradient-btn); color: #fff; box-shadow: 0 8px 24px -10px var(--primary); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 28px -8px var(--primary); }
+.btn-outline { border: 1px solid rgba(255,255,255,.35); color: #fff; }
+.btn-outline:hover { border-color: var(--soft); background: rgba(108, 92, 231, .12); }
+
+.tag {
+  display: inline-block;
+  padding: 6px 12px; border-radius: 6px;
+  font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--soft);
+  background: rgba(108, 92, 231, .14);
+}
+.tag-text {
+  font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--soft);
+}
+.status-learning { display: inline-flex; align-items: center; gap: 8px; }
+.status-learning::before {
+  content: ""; width: 7px; height: 7px; border-radius: 50%;
+  background: #4ade80; box-shadow: 0 0 0 0 rgba(74, 222, 128, .6);
+  animation: pulse-dot 1.8s infinite;
+}
+@keyframes pulse-dot {
+  0%   { box-shadow: 0 0 0 0 rgba(74, 222, 128, .55); }
+  70%  { box-shadow: 0 0 0 6px rgba(74, 222, 128, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+}
+
+/* ---------- 5. Sections ---------- */
+.section { padding: 72px 0; }
+.section-alt { background: #0D1222; }
+
+.section-head { text-align: center; margin-bottom: 44px; }
+.section-head h2 { margin-top: 8px; font-size: 1.9rem; font-weight: 700; color: #fff; }
+.underline-bar {
+  display: block; width: 44px; height: 3px; margin: 12px auto 0;
+  border-radius: 3px; background: var(--gradient);
+}
+
+/* ---------- 6. Hero ---------- */
+.hero {
+  background:
+    radial-gradient(600px 400px at 85% 20%, rgba(108, 92, 231, .18), transparent 70%),
+    var(--bg);
+}
+
+.tech {
+  --c: #6C5CE7;
+  display: inline-grid; place-items: center;
+  width: 42px; height: 42px; border-radius: 10px;
+  font-size: 13px; font-weight: 800; color: #fff;
+  background: var(--c);
+  box-shadow: 0 6px 16px -8px var(--c);
+}
+.tech.sm { width: 26px; height: 26px; border-radius: 6px; font-size: 10px; }
+
+/* Tuiles contenant les vrais logos (Devicon) : fond clair pour que les logos
+   monochromes (GitHub) restent visibles, halo de la couleur officielle de la marque. */
+.tech-logo {
+  --c: #6C5CE7;
+  display: inline-grid; place-items: center;
+  width: 44px; height: 44px; border-radius: 10px;
+  background: #f4f4f6;
+  box-shadow: 0 6px 18px -8px var(--c), inset 0 0 0 1px rgba(0,0,0,.04);
+  transition: transform .2s;
+}
+.tech-logo:hover { transform: translateY(-3px); }
+.tech-logo i { font-size: 22px; color: var(--c); }
+
+/* Photo */
+.photo-wrap { position: relative; width: min(100%, 420px); aspect-ratio: 1 / 1.05; }
+.photo-circle {
+  position: absolute; inset: 4% 6% 8% 6%;
+  border-radius: 50%;
+  background: linear-gradient(160deg, #A29BFE 0%, #6C5CE7 45%, #5352ED 100%);
+  box-shadow: 0 0 80px -10px rgba(108, 92, 231, .55);
+}
+.photo-frame {
+  position: absolute; inset: 4% 6% 8% 6%;
+  border-radius: 50%;
+  overflow: hidden;
+  display: grid; place-items: center;
+}
+.photo-frame img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+  background: var(--card);
+}
+.photo-frame img.hidden-img { display: none; }
+
+.photo-placeholder {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  color: rgba(255, 255, 255, .92);
+  text-align: center;
+}
+.photo-placeholder strong { font-size: 15px; }
+.photo-placeholder span { font-size: 13px; opacity: .8; }
+
+/* Carte code : positionnée sous le visage (et non par-dessus) */
+.code-card {
+  position: absolute; right: -6px; bottom: 2%;
+  width: 230px; padding: 12px 14px;
+  border-radius: 10px;
+  background: rgba(21, 26, 45, .92);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(6px);
+  font-family: "JetBrains Mono", monospace; font-size: 11px; line-height: 1.55;
+  box-shadow: 0 20px 40px -20px #000;
+}
+.code-card pre { margin: 0; white-space: pre-wrap; color: #cbd5e1; }
+.code-card .k { color: #A29BFE; }
+.code-card .s { color: #fb923c; }
+.code-card .dot { width: 7px; height: 7px; border-radius: 50%; background: #4ade80; }
+
+@media (max-width: 640px) {
+  .code-card { position: relative; right: auto; top: auto; bottom: auto; width: 100%; margin-top: -30px; }
+  .photo-wrap { aspect-ratio: 1 / 1; }
+}
+
+/* ---------- 7. About / stats ---------- */
+.stats { display: grid; grid-template-columns: 1fr 1fr; }
+.stat {
+  display: flex; align-items: center; gap: 16px;
+  padding: 28px 24px;
+  border-right: 1px solid var(--card-border);
+  border-bottom: 1px solid var(--card-border);
+}
+.stat:nth-child(2n) { border-right: 0; }
+.stat:nth-child(n+3) { border-bottom: 0; }
+.stat strong { display: block; font-size: 1.7rem; color: #fff; line-height: 1.1; }
+.stat small { color: var(--text-muted); font-size: 13px; }
+.stat-icon {
+  flex: none; display: grid; place-items: center;
+  width: 46px; height: 46px; border-radius: 12px;
+  font-size: 18px; color: #fff;
+  background: var(--gradient);
+}
+
+/* ---------- 8. Skills ---------- */
+.skill-top { display: flex; align-items: center; gap: 12px; font-size: 14px; color: #e2e8f0; }
+.skill-top em { margin-left: auto; font-style: normal; font-size: 13px; color: #cbd5e1; }
+.bar { height: 6px; margin-top: 10px; border-radius: 6px; background: var(--grey-1); overflow: hidden; }
+.bar span {
+  display: block; height: 100%; width: 0;
+  border-radius: 6px; background: var(--gradient);
+  transition: width 1.2s cubic-bezier(.22, 1, .36, 1);
+}
+
+/* Compétence en cours d'apprentissage (ex. Vibe Coding) : barre en pointillés, libellé discret */
+.skill.is-learning .skill-top em { color: var(--soft); font-size: 11px; letter-spacing: .04em; }
+.skill.is-learning .bar { background: transparent; border: 1px dashed var(--card-border); }
+.skill.is-learning .bar span { background: var(--soft); opacity: .55; }
+
+/* ---------- 9. Projects ---------- */
+.project {
+  position: relative;
+  border-radius: 12px; overflow: hidden;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+}
+.project-num {
+  position: absolute; top: 12px; left: 14px; z-index: 2;
+  font-size: 12px; font-weight: 700; color: #fff;
+}
+.project-img {
+  position: relative; height: 170px;
+  display: grid; place-items: center;
+  background: var(--grey-1);
+}
+.project-img img { width: 100%; height: 100%; object-fit: cover; }
+.project-body { padding: 20px; }
+.project-body h3 { font-size: 1.05rem; font-weight: 700; color: #fff; }
+.project-body p { margin: 6px 0 14px; font-size: 13px; color: var(--text-muted); }
+.project-link { display: block; text-align: right; font-size: 12px; color: var(--soft); }
+
+/* État "vide / grisé" : enlève la classe is-empty quand le projet est rempli */
+.project.is-empty { filter: grayscale(1); opacity: .6; }
+.project.is-empty .project-img {
+  background: repeating-linear-gradient(45deg, var(--grey-1), var(--grey-1) 12px, var(--grey-2) 12px, var(--grey-2) 24px);
+}
+.project.is-empty .project-link { pointer-events: none; }
+
+.ph-label {
+  padding: 4px 10px; border-radius: 6px;
+  font-size: 12px; color: #cbd5e1;
+  background: rgba(10, 14, 26, .7);
+}
+
+/* ---------- 10. Designs ---------- */
+.design {
+  position: relative; margin: 0;
+  aspect-ratio: 3 / 4;
+  border-radius: 12px; overflow: hidden;
+  display: grid; place-items: center;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  transition: transform .25s, border-color .25s;
+}
+.design img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.design:hover { transform: translateY(-4px); border-color: var(--soft); }
+.design.is-empty {
+  filter: grayscale(1); opacity: .6;
+  background: repeating-linear-gradient(45deg, var(--grey-1), var(--grey-1) 12px, var(--grey-2) 12px, var(--grey-2) 24px);
+}
+
+/* ---------- 11. Contact ---------- */
+.testimonial {
+  position: relative;
+  padding: 26px;
+  border-radius: 12px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  font-size: 14px; color: #cbd5e1; line-height: 1.6;
+}
+.quote-mark { display: block; font-size: 3rem; line-height: .8; color: var(--primary); font-family: Georgia, serif; }
+.avatar {
+  display: grid; place-items: center;
+  width: 38px; height: 38px; border-radius: 50%;
+  background: var(--gradient); color: #fff; font-weight: 700;
+}
+.social {
+  display: grid; place-items: center;
+  width: 38px; height: 38px; border-radius: 10px;
+  font-size: 13px; font-weight: 700; color: #fff;
+  background: var(--card); border: 1px solid var(--card-border);
+  transition: background .2s, transform .2s, box-shadow .2s;
+}
+.social:hover { transform: translateY(-2px); }
+
+/* Couleurs officielles de chaque réseau */
+.social-github:hover     { background: #181717; box-shadow: 0 8px 18px -8px #181717; }
+.social-linkedin:hover   { background: #0A66C2; box-shadow: 0 8px 18px -8px #0A66C2; }
+.social-x:hover          { background: #000000; box-shadow: 0 8px 18px -8px #000000; }
+.social-instagram {
+  background: linear-gradient(135deg, #f58529, #dd2a7b 55%, #515bd4);
+  border-color: transparent;
+}
+.social-instagram:hover  { filter: brightness(1.1); }
+.social-whatsapp {
+  background: #25D366;
+  border-color: transparent;
+}
+.social-whatsapp:hover   { filter: brightness(1.08); }
+
+/* ---------- 12. Footer ---------- */
+.footer { padding: 22px 0; border-top: 1px solid var(--card-border); background: var(--bg); }
+
+/* ---------- 13. Accessibilité ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .bar span, .btn, .design { transition: none; }
+}
